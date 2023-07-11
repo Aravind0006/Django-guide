@@ -1,0 +1,8 @@
+from django.urls import path
+from emp1.views import employers_view,create_employers
+
+urlpatterns = [
+    path('employers/', employers_view),
+    path('em/',create_employers)
+
+]

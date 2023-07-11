@@ -1,0 +1,10 @@
+from django.contrib import admin
+from emp1.models import Employers
+
+# Register your models here.
+
+class FilterEmployers(admin.ModelAdmin):
+    list_display = ("first_name","age", "phone")
+    list_filter = ("first_name","age", "phone")
+
+admin.site.register(Employers,FilterEmployers)

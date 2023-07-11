@@ -1,0 +1,8 @@
+class Employee(models.Model):
+    first_name = models.CharField(max_length=100)
+    age = models.IntegerField()
+    DOB = models.DateTimeField()
+    phone = models.IntegerField()
+
+    def __str__(self):
+        return self.first_name

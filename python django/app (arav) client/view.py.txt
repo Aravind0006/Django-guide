@@ -1,0 +1,21 @@
+from django.shortcuts import render
+from emp1.serializer import EmployerSerializer
+from emp1.models import Employers
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
+# Create your views here.
+@api_view(['GET'])
+def employers_view(request):
+    employers = Employers.objects.all()
+    serializer = EmployerSerializer(employers, many=True)
+    return Response(serializer.data)
+
+@api_view(['POST'])
+def create_employers(request):
+    serializer = EmployerSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    else:
+       return Response(serializer.error)
